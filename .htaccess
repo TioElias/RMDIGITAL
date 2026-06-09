@@ -1,0 +1,21 @@
+# Disable Directory Browsing (prevents visitors from viewing folder contents)
+Options -Indexes
+
+# Security Headers Configuration
+<IfModule mod_headers.c>
+    # Prevent the site from being embedded in frames on other sites (prevents Clickjacking)
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # Prevent browsers from trying to mime-sniff the content-type (prevents MIME attacks)
+    Header set X-Content-Type-Options "nosniff"
+
+    # Enable built-in XSS protection in older web browsers
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Control how much referrer information is sent with requests
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Content Security Policy (CSP) - defines allowed sources of scripts, styles, etc.
+    # Allows local files, Google Fonts, and inline styles (which is common for CSS transitions)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
+</IfModule>
