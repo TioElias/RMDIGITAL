@@ -15,7 +15,6 @@ Options -Indexes
     # Control how much referrer information is sent with requests
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 
-    # Content Security Policy (CSP) - defines allowed sources of scripts, styles, etc.
-    # Allows local files, Google Fonts, and inline styles (which is common for CSS transitions)
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
+    # Content Security Policy (CSP) - commented out to prevent blocking external testing/analytics tools
+    # Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
 </IfModule>
